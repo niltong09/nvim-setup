@@ -1,0 +1,16 @@
+{
+  "suggest.noselect": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "php",
+    "css",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "markdown",
+    "html",
+    "vue",
+    "json"
+  ],
+  "snippets.ultisnips.pythonPrompt": false
+}
