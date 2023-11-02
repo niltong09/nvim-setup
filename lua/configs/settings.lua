@@ -53,6 +53,7 @@ nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 nmap <C-t>l :tabn<CR>
 nmap <C-t>h :tabp<CR>
+nnoremap <leader>gg :LazyGit<cr>
 
 set clipboard+=unnamedplus
 
@@ -150,4 +151,5 @@ vim.g.lazygit_use_custom_config_file_path = 0 -- config file path is evaluated i
 vim.g.lazygit_config_file_path = '' -- custom config file path
 -- OR
 vim.g.lazygit_config_file_path = {} -- table of custom config file paths
+
 
