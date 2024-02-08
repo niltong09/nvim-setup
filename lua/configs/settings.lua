@@ -5,68 +5,71 @@
 
 --vim.cmd([[ execute pathogen#infect() ]])
 
-vim.cmd([[ syntax on ]])
-vim.cmd([[ filetype plugin indent on ]])
-vim.cmd([[ set shiftwidth=2 ]])
-vim.cmd([[ set ruler ]])
-vim.cmd([[ set number ]])
-vim.cmd([[ set tabstop=2 ]])
+vim.g.mapleader = " "
+vim.cmd.syntax = "on"
+vim.cmd.filetype = "plugin indent on"
 
-vim.cmd([[ set statusline+=%#warningmsg# ]])
-vim.cmd([[ set statusline+=%{SyntasticStatuslineFlag()} ]])
-vim.cmd([[ set statusline+=%* ]])
+-- vim.cmd([[ syntax on ]])
+-- vim.cmd([[ filetype plugin indent on ]])
+vim.opt.shiftwidth = 2
+vim.opt.ruler = true
+-- vim.opt.number = 2
+vim.opt.tabstop = 2
+vim.opt.wildignore:append("*/tmp/*,*.so,*.swp,*.zip")
+vim.opt.completeopt = noinsert,menuone,noselect
+vim.opt.so = 7
+vim.cmd.colorscheme = dracula
 
-vim.cmd([[ let g:syntastic_always_populate_loc_list = 1 ]])
-vim.cmd([[ let g:syntastic_auto_loc_list = 1 ]])
-vim.cmd([[ let g:syntastic_check_on_open = 1 ]])
-vim.cmd([[ let g:syntastic_check_on_wq = 0 ]])
-vim.cmd([[ set wildignore+=*/tmp/*,*.so,*.swp,*.zip ]])
-vim.cmd([[ let g:ctrlp_working_path_mode = 'rc' ]])
-vim.cmd([[ let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|tmp|logs|vendor|dist)$' ]])
-vim.cmd([[ let mapleader = "," ]])
-vim.cmd([[ nmap <leader>n :NERDTreeToggle<CR>]])
--- vim.cmd([[ nmap <leader>b :CtrlPMixed<CR>]])
--- vim.cmd([[ nmap <leader>j :CtrlP<CR>]])
-vim.cmd([[ nmap <leader>w :w<CR> ]])
-vim.cmd([[ nmap <leader>q :q<CR> ]])
-vim.cmd([[ nmap <leader>tn :tabnew<CR> ]])
-vim.cmd([[ nmap <leader>tl :tabn<CR> ]])
-vim.cmd([[ nmap <leader>th :tabp<CR> ]])
--- vim.cmd([[ autocmd BufEnter * call ncm2#enable_for_buffer() ]])
-vim.cmd([[ set completeopt=noinsert,menuone,noselect ]])
-vim.cmd([[ let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log" ]])
-vim.cmd([[ let $NVIM_PYTHON_LOG_LEVEL="/tmp/DEBUG" ]])
-vim.cmd([[ set so=7 ]])
-vim.cmd([[ colorscheme dracula ]])
+-- vim.cmd([[ set shiftwidth=2 ]])
+-- vim.cmd([[ set ruler ]])
+vim.cmd([[ set number relativenumber ]])
+-- vim.cmd([[ set tabstop=2 ]])
 
-vim.cmd([[
-let g:tmux_navigator_no_mappings = 0
-let g:tmux_navigator_disable_when_zoomed = 1
+-- vim.cmd([[ set wildignore+=*/tmp/*,*.so,*.swp,*.zip ]])
+vim.keymap.set('n','<leader>n',vim.cmd.NERDTreeToggle)
+vim.keymap.set('n','<leader>w',vim.cmd.write)
+vim.keymap.set('n','<leader>q',vim.cmd.quit)
+vim.keymap.set('n','<leader>tn',vim.cmd.tabnew)
+vim.keymap.set('n','<leader>tl',vim.cmd.tabn)
+vim.keymap.set('n','<leader>th',vim.cmd.tabp)
 
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-autocmd VimResized * :wincmd =
+-- vim.o.NVIM_PYTHON_LOG_FILE = "/tmp/nvim_log"
+-- vim.o.NVIM_PYTHON_LOG_LEVEL = "DEBUG"
+-- vim.cmd([[ set completeopt=noinsert,menuone,noselect ]])
+-- vim.cmd([[ let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log" ]])
+-- vim.cmd([[ let $NVIM_PYTHON_LOG_LEVEL="/tmp/DEBUG" ]])
+-- vim.cmd([[ set so=7 ]])
+-- vim.cmd([[ colorscheme dracula ]])
 
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
-nmap <C-t>l :tabn<CR>
-nmap <C-t>h :tabp<CR>
-nnoremap <leader>gg :LazyGit<cr>
+-- vim.cmd([[
+-- let g:tmux_navigator_no_mappings = 0
+-- let g:tmux_navigator_disable_when_zoomed = 1
 
-set clipboard+=unnamedplus
+-- noremap <C-h> <C-w>h
+-- noremap <C-j> <C-w>j
+-- noremap <C-k> <C-w>k
+-- noremap <C-l> <C-w>l
+-- autocmd VimResized * :wincmd =
 
-]])
+-- nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+-- nnoremap <leader>= :wincmd =<cr>
+-- nmap <C-t>l :tabn<CR>
+-- nmap <C-t>h :tabp<CR>
+
+-- set clipboard+=unnamedplus
+
+-- ]])
 
 --vim.cmd([[ source ~/.config/nvim/coc_config.vim ]]);
 
 local builtin = require('telescope.builtin')
+vim.keymap.set('n','<C-p>',builtin.git_files, {})
 vim.keymap.set('n','<leader>j',builtin.find_files, {})
 vim.keymap.set('n','<leader>fg',builtin.live_grep, {})
 vim.keymap.set('n','<leader>fb',builtin.buffers, {})
 vim.keymap.set('n','<leader>fh',builtin.help_tags, {})
 vim.keymap.set('v','<leader>m',":VtrSendLinesToRunner<CR>", {})
+vim.keymap.set('n','<leader>gg', ':LazyGit<CR>',{})
 
 -- lualine config
 require('lualine').setup {

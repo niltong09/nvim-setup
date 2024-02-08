@@ -29,21 +29,7 @@
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 	use {
-		'phaazon/mind.nvim',
-		branch = 'v2.2',
-		requires = { 'nvim-lua/plenary.nvim' }, config = function()
-			local opts
-			opts = {
-				persistence = {
-					state_path = "~/Dropbox/mind/mind.json",
-					data_dir = "~/Dropbox/mind"
-				}
-			}
-			require 'mind'.setup(opts)
-		end
-	}
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+		'nvim-telescope/telescope.nvim', tag = '0.1.4',
 		requires = { { 'nvim-lua/plenary.nvim' } },
 		config = function()
 			require('telescope').setup{
@@ -55,21 +41,25 @@ return require('packer').startup(function()
 	}
 	use 'scrooloose/nerdtree'
 	use 'tpope/vim-commentary'
-	use 'tpope/vim-fugitive'
+	-- use 'tpope/vim-fugitive'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-sensible'
 	use 'christoomey/vim-tmux-navigator'
 	use 'christoomey/vim-tmux-runner'
 	use 'dracula/vim'
 	use 'neoclide/coc.nvim'
-	use 'scrooloose/syntastic'
-	use 'itchyny/lightline.vim'
+	-- use 'scrooloose/syntastic'
+	-- use 'itchyny/lightline.vim'
 	use 'rayburgemeestre/phpfolding.vim'
 	use 'majutsushi/tagbar'
 	use 'mg979/vim-visual-multi'
 	-- use 'ludovicchabant/vim-gutentags'
-	use 'nvim-treesitter/nvim-treesitter'
-	use 'vim-scripts/YankRing.vim'
+	use('nvim-treesitter/nvim-treesitter', { run = ":TSUpdate"})
+	-- Install harpoon
+	use 'theprimeagen/harpoon'
+	use 'honza/vim-snippets'
+	use 'mbbill/undotree'
+	--use 'vim-scripts/YankRing.vim'
 	use { 
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
