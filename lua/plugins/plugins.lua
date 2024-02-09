@@ -39,7 +39,17 @@ return require('packer').startup(function()
 			}
 		end
 	}
-	use 'scrooloose/nerdtree'
+	--use 'scrooloose/nerdtree'
+  --use 'ryanoasis/vim-devicons'
+  use {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = "v3.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
+  }
 	use 'tpope/vim-commentary'
 	-- use 'tpope/vim-fugitive'
 	use 'tpope/vim-surround'
@@ -47,6 +57,7 @@ return require('packer').startup(function()
 	use 'christoomey/vim-tmux-navigator'
 	use 'christoomey/vim-tmux-runner'
 	use 'dracula/vim'
+  use { 'catppuccin/nvim', as = 'catppuccin' }
 	use 'neoclide/coc.nvim'
 	-- use 'scrooloose/syntastic'
 	-- use 'itchyny/lightline.vim'

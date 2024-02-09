@@ -18,49 +18,45 @@ vim.opt.tabstop = 2
 vim.opt.wildignore:append("*/tmp/*,*.so,*.swp,*.zip")
 vim.opt.completeopt = noinsert,menuone,noselect
 vim.opt.so = 7
-vim.cmd.colorscheme = dracula
+vim.cmd.colorscheme = "catppuccin-macchiato"
+vim.opt.guicursor = ""
+vim.opt.relativenumber = true
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.encoding = "UTF-8"
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+
+vim.opt.updatetime = 50
+vim.opt.colorcolumn = "80"
 
 -- vim.cmd([[ set shiftwidth=2 ]])
 -- vim.cmd([[ set ruler ]])
-vim.cmd([[ set number relativenumber ]])
+-- vim.cmd([[ set number relativenumber ]])
 -- vim.cmd([[ set tabstop=2 ]])
 
 -- vim.cmd([[ set wildignore+=*/tmp/*,*.so,*.swp,*.zip ]])
-vim.keymap.set('n','<leader>n',vim.cmd.NERDTreeToggle)
+vim.keymap.set('n','<leader>n',":Neotree toggle<CR>")
+
 vim.keymap.set('n','<leader>w',vim.cmd.write)
 vim.keymap.set('n','<leader>q',vim.cmd.quit)
 vim.keymap.set('n','<leader>tn',vim.cmd.tabnew)
 vim.keymap.set('n','<leader>tl',vim.cmd.tabn)
 vim.keymap.set('n','<leader>th',vim.cmd.tabp)
 
--- vim.o.NVIM_PYTHON_LOG_FILE = "/tmp/nvim_log"
--- vim.o.NVIM_PYTHON_LOG_LEVEL = "DEBUG"
--- vim.cmd([[ set completeopt=noinsert,menuone,noselect ]])
--- vim.cmd([[ let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log" ]])
--- vim.cmd([[ let $NVIM_PYTHON_LOG_LEVEL="/tmp/DEBUG" ]])
--- vim.cmd([[ set so=7 ]])
--- vim.cmd([[ colorscheme dracula ]])
+-- Move visual code up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<C-d>", "<C-d>zz")
+vim.keymap.set("v", "<C-u>", "<C-u>zz")
 
--- vim.cmd([[
--- let g:tmux_navigator_no_mappings = 0
--- let g:tmux_navigator_disable_when_zoomed = 1
-
--- noremap <C-h> <C-w>h
--- noremap <C-j> <C-w>j
--- noremap <C-k> <C-w>k
--- noremap <C-l> <C-w>l
--- autocmd VimResized * :wincmd =
-
--- nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
--- nnoremap <leader>= :wincmd =<cr>
--- nmap <C-t>l :tabn<CR>
--- nmap <C-t>h :tabp<CR>
-
--- set clipboard+=unnamedplus
-
--- ]])
-
---vim.cmd([[ source ~/.config/nvim/coc_config.vim ]]);
+-- map control c to esc
+vim.keymap.set("i", "<C-c>", "<Esc>")
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n','<C-p>',builtin.git_files, {})
@@ -75,7 +71,7 @@ vim.keymap.set('n','<leader>gg', ':LazyGit<CR>',{})
 require('lualine').setup {
 	options = {
 		icons_enabled = true,
-		theme = 'dracula',
+		theme = 'catppuccin',
 		refresh = {
 			statusline = 1000,
 			tabline = 1000,
