@@ -4,5 +4,7 @@ require("configs.tmux")
 require("configs.treesitter")
 require("configs.harpoon")
 require("configs.undotree")
-require("configs.coc")
+require("configs.lspzero")
+require("configs.prettier")
+-- require("configs.coc")
 

@@ -58,12 +58,46 @@ return require('packer').startup(function()
 	use 'christoomey/vim-tmux-runner'
 	use 'dracula/vim'
   use { 'catppuccin/nvim', as = 'catppuccin' }
-	use 'neoclide/coc.nvim'
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    requires = {
+    --- Uncomment the two plugins below if you want to manage the language servers from neovim
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},
+      -- Prettier
+      {'nvimtools/none-ls.nvim'},
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/cmp-cmdline'},
+      {'L3MON4D3/LuaSnip'},
+      {'SirVer/ultisnips'},
+    }
+  }
+	-- use 'neoclide/coc.nvim'
 	-- use 'scrooloose/syntastic'
 	-- use 'itchyny/lightline.vim'
 	use 'rayburgemeestre/phpfolding.vim'
 	use 'majutsushi/tagbar'
 	use 'mg979/vim-visual-multi'
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 	-- use 'ludovicchabant/vim-gutentags'
 	use('nvim-treesitter/nvim-treesitter', { run = ":TSUpdate"})
 	-- Install harpoon

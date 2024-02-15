@@ -21,6 +21,7 @@ vim.opt.so = 7
 vim.cmd.colorscheme = "catppuccin-macchiato"
 vim.opt.guicursor = ""
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.hlsearch = false
