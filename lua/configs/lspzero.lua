@@ -23,7 +23,7 @@ end)
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'eslint','tsserver', 'rust_analyzer', 'bashls', 'cssls', 'dockerls', 'graphql', 'html', 'jsonls', 'lua_ls', 'intelephense', 'pyre', 'tailwindcss', 'volar'},
+  ensure_installed = {'gopls', 'templ','eslint','tsserver', 'rust_analyzer', 'bashls', 'cssls', 'dockerls', 'graphql', 'html', 'jsonls', 'lua_ls', 'intelephense', 'pyre', 'tailwindcss', 'volar'},
   handlers = {
     lsp.default_setup,
     lua_ls = function()
@@ -53,6 +53,12 @@ lspconfig.volar.setup({
   capabilities = capabilities
 })
 lspconfig.tailwindcss.setup({
+  capabilities = capabilities
+})
+lspconfig.gopls.setup({
+  capabilities = capabilities
+})
+lspconfig.templ.setup({
   capabilities = capabilities
 })
 
